@@ -1,0 +1,21 @@
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+      - MINIO_ROOT_USER=abcd
+      - MINIO_ROOT_PASSWORD=abcd2345
+      - MINIO_DEFAULT_BUCKETS=buck1
+    networks:
+      - lakehouse-network
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+networks:
+  lakehouse-network:
+
+volumes:
+  minio_data:
